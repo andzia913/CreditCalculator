@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CreditCalculator
 {
-    public partial class Form1 : Form
+    public partial class btn_calculate : Form
     {
-        public Form1()
+        public btn_calculate()
         {
             InitializeComponent();
         }
