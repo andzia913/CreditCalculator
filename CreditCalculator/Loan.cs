@@ -19,11 +19,7 @@ namespace CreditCalculator
             InterestRate = interestRate;
             LoanPeriod = loanPeriod;
         }
-        public decimal CalculateTotalCost(decimal monthlyPayment)
-        {
-            int totalNumberOfPayments = CalculateTotalNumberOfPayments();
-            return monthlyPayment * totalNumberOfPayments - LoanAmount;
-        }
+       
 
         public decimal CalculateMonthlyInterestRate()
         {
