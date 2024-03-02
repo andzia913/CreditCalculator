@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace CreditCalculator
 {
-    public partial class btn_calculate : Form
+    public partial class MainForm : Form
     {
-        public btn_calculate()
+        public MainForm()
         {
             InitializeComponent();
+        }
+
+        Loan loan;
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            loan = new Loan(decimal.Parse(txt_loanAmount.Text), decimal.Parse(txt_interestRate.Text), int.Parse(txt_loanPeriod.Text));
+            lbl_totalCost.Text = "Całkowity koszt kredytu: " + loan.CalculateTotalCost(150).ToString();
         }
     }
 }

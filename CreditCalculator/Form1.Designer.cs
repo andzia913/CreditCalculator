@@ -1,6 +1,6 @@
 ﻿namespace CreditCalculator
 {
-    partial class btn_calculate
+    partial class MainForm
     {
         /// <summary>
         /// Wymagana zmienna projektanta.
@@ -35,27 +35,29 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_interestRate = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.lbl_totalCost = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(47, 225);
+            this.button1.Location = new System.Drawing.Point(79, 383);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 33);
             this.button1.TabIndex = 0;
             this.button1.Text = "Przelicz";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txt_loanAmount
             // 
-            this.txt_loanAmount.Location = new System.Drawing.Point(235, 56);
+            this.txt_loanAmount.Location = new System.Drawing.Point(296, 56);
             this.txt_loanAmount.Name = "txt_loanAmount";
             this.txt_loanAmount.Size = new System.Drawing.Size(100, 22);
             this.txt_loanAmount.TabIndex = 1;
             // 
             // txt_loanPeriod
             // 
-            this.txt_loanPeriod.Location = new System.Drawing.Point(235, 93);
+            this.txt_loanPeriod.Location = new System.Drawing.Point(296, 93);
             this.txt_loanPeriod.Name = "txt_loanPeriod";
             this.txt_loanPeriod.Size = new System.Drawing.Size(100, 22);
             this.txt_loanPeriod.TabIndex = 2;
@@ -80,7 +82,7 @@
             // 
             // txt_interestRate
             // 
-            this.txt_interestRate.Location = new System.Drawing.Point(235, 131);
+            this.txt_interestRate.Location = new System.Drawing.Point(296, 131);
             this.txt_interestRate.Name = "txt_interestRate";
             this.txt_interestRate.Size = new System.Drawing.Size(100, 22);
             this.txt_interestRate.TabIndex = 5;
@@ -94,11 +96,21 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Oprocentowanie";
             // 
-            // btn_calculate
+            // lbl_totalCost
+            // 
+            this.lbl_totalCost.AutoSize = true;
+            this.lbl_totalCost.Location = new System.Drawing.Point(60, 282);
+            this.lbl_totalCost.Name = "lbl_totalCost";
+            this.lbl_totalCost.Size = new System.Drawing.Size(44, 16);
+            this.lbl_totalCost.TabIndex = 7;
+            this.lbl_totalCost.Text = "label4";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_totalCost);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txt_interestRate);
             this.Controls.Add(this.label2);
@@ -106,7 +118,7 @@
             this.Controls.Add(this.txt_loanPeriod);
             this.Controls.Add(this.txt_loanAmount);
             this.Controls.Add(this.button1);
-            this.Name = "btn_calculate";
+            this.Name = "MainForm";
             this.Text = "Kalkulator kredytu hipotecznego";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -122,6 +134,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_interestRate;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_totalCost;
     }
 }
 
