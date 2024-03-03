@@ -32,8 +32,7 @@ namespace CreditCalculator
         }
         public decimal CalculateMonthlyPayment()
         {
-
-            decimal monthlyPayment = LoanAmount * (1 + (decimal)Math.Pow((double)MonthlyInterestRate(), TotalNumberOfPayments()) * (1 + MonthlyInterestRate() - 1) / ((decimal)Math.Pow((1 + (double)MonthlyInterestRate()), TotalNumberOfPayments())) - 1);
+            decimal monthlyPayment = LoanAmount * ((decimal)Math.Pow(1 + (double)MonthlyInterestRate(), TotalNumberOfPayments()) * MonthlyInterestRate()) / ((decimal)Math.Pow(1 + (double)MonthlyInterestRate(), TotalNumberOfPayments()) - 1);
             return monthlyPayment;
         }
     }
