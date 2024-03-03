@@ -21,12 +21,12 @@ namespace CreditCalculator
         }
        
 
-        public decimal CalculateMonthlyInterestRate()
+        public decimal MonthlyInterestRate()
         {
             return InterestRate / 12 / 100; 
         }
 
-        public int CalculateTotalNumberOfPayments()
+        public int TotalNumberOfPayments()
         {
             return LoanPeriod * 12; 
         }
