@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CreditCalculator
 {
-    internal class RepaymentScheduleGenerator
+    internal class RepaymentSchedule
     {
 
-        public List<Repayment> LoanCalculator(Loan loan)
-            {
-            decimal monthlyPayment = CalculateMonthlyPayment(loan);
+        public List<Repayment> CalculateRepaymentSchedule(Loan loan)
+        {
+            decimal monthlyPayment = loan.CalculateMonthlyPayment();
 
             List<Repayment> repaymentSchedule = new List<Repayment>();
 
@@ -35,24 +35,14 @@ namespace CreditCalculator
             }
 
             return repaymentSchedule;
-        }
-        private decimal CalculateMonthlyPayment(Loan loan)
-        {
-            // TODO: Fix the bug in the formula, there is no loan in this formula
-            decimal monthlyInterestRate = loan.MonthlyInterestRate();
-            int totalNumberOfPayments = loan.TotalNumberOfPayments();
+        
+    }
 
-            decimal monthlyPayment = loan.LoanAmount * (monthlyInterestRate * (decimal)Math.Pow((double)(1 + monthlyInterestRate), totalNumberOfPayments)) /
-                                     ((decimal)Math.Pow((double)(1 + monthlyInterestRate), totalNumberOfPayments) - 1);
-
-            return monthlyPayment;
-        }
-
+       
         public decimal CalculateTotalCost(Loan loan)
         {
-            List<Repayment> repaymentSchedule = LoanCalculator(loan);
-            return repaymentSchedule.Sum(x => x.PaymentAmount) - loan.LoanAmount;
+            List<Repayment> repaymentSchedule = CalculateRepaymentSchedule(loan);
+            return repaymentSchedule.Sum(x => x.InterestAmount);
         }
-
     }
 }
