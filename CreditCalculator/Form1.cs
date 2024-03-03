@@ -21,10 +21,9 @@ namespace CreditCalculator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RepaymentScheduleGenerator generator = new RepaymentScheduleGenerator();
+            loan = new Loan(Convert.ToDecimal(txt_loanAmount.Text), Convert.ToDecimal(txt_interestRate.Text), Convert.ToInt32(txt_loanPeriod.Text));
 
-            decimal totalCost = generator.CalculateTotalCost(loan);
-
+            decimal totalCost = new RepaymentSchedule().CalculateTotalCost(loan);
             lbl_totalCost.Text = "Całkowity koszt kredytu: " + totalCost.ToString();
         }
     }
