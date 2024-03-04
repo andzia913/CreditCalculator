@@ -36,6 +36,9 @@
             this.txt_interestRate = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lbl_totalCost = new System.Windows.Forms.Label();
+            this.lbl_repaymentAmount = new System.Windows.Forms.Label();
+            this.lbl_loanAmount = new System.Windows.Forms.Label();
+            this.lbl_interestTotal = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -99,17 +102,47 @@
             // lbl_totalCost
             // 
             this.lbl_totalCost.AutoSize = true;
-            this.lbl_totalCost.Location = new System.Drawing.Point(60, 282);
+            this.lbl_totalCost.Location = new System.Drawing.Point(56, 215);
             this.lbl_totalCost.Name = "lbl_totalCost";
-            this.lbl_totalCost.Size = new System.Drawing.Size(44, 16);
+            this.lbl_totalCost.Size = new System.Drawing.Size(146, 16);
             this.lbl_totalCost.TabIndex = 7;
-            this.lbl_totalCost.Text = "label4";
+            this.lbl_totalCost.Text = "Całkowity koszt kretytu:";
+            // 
+            // lbl_repaymentAmount
+            // 
+            this.lbl_repaymentAmount.AutoSize = true;
+            this.lbl_repaymentAmount.Location = new System.Drawing.Point(59, 248);
+            this.lbl_repaymentAmount.Name = "lbl_repaymentAmount";
+            this.lbl_repaymentAmount.Size = new System.Drawing.Size(102, 16);
+            this.lbl_repaymentAmount.TabIndex = 8;
+            this.lbl_repaymentAmount.Text = "Wysokość raty: ";
+            // 
+            // lbl_loanAmount
+            // 
+            this.lbl_loanAmount.AutoSize = true;
+            this.lbl_loanAmount.Location = new System.Drawing.Point(351, 215);
+            this.lbl_loanAmount.Name = "lbl_loanAmount";
+            this.lbl_loanAmount.Size = new System.Drawing.Size(117, 16);
+            this.lbl_loanAmount.TabIndex = 9;
+            this.lbl_loanAmount.Text = "Pożyczona kwota: ";
+            // 
+            // lbl_interestTotal
+            // 
+            this.lbl_interestTotal.AutoSize = true;
+            this.lbl_interestTotal.Location = new System.Drawing.Point(538, 215);
+            this.lbl_interestTotal.Name = "lbl_interestTotal";
+            this.lbl_interestTotal.Size = new System.Drawing.Size(115, 16);
+            this.lbl_interestTotal.TabIndex = 10;
+            this.lbl_interestTotal.Text = "Wartość odsetek: ";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_interestTotal);
+            this.Controls.Add(this.lbl_loanAmount);
+            this.Controls.Add(this.lbl_repaymentAmount);
             this.Controls.Add(this.lbl_totalCost);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txt_interestRate);
@@ -135,6 +168,9 @@
         private System.Windows.Forms.TextBox txt_interestRate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbl_totalCost;
+        private System.Windows.Forms.Label lbl_repaymentAmount;
+        private System.Windows.Forms.Label lbl_loanAmount;
+        private System.Windows.Forms.Label lbl_interestTotal;
     }
 }
 
