@@ -104,9 +104,9 @@
             this.lbl_totalCost.AutoSize = true;
             this.lbl_totalCost.Location = new System.Drawing.Point(56, 215);
             this.lbl_totalCost.Name = "lbl_totalCost";
-            this.lbl_totalCost.Size = new System.Drawing.Size(146, 16);
+            this.lbl_totalCost.Size = new System.Drawing.Size(149, 16);
             this.lbl_totalCost.TabIndex = 7;
-            this.lbl_totalCost.Text = "Całkowity koszt kretytu:";
+            this.lbl_totalCost.Text = "Całkowity koszt kretytu: ";
             // 
             // lbl_repaymentAmount
             // 

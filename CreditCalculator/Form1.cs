@@ -24,10 +24,10 @@ namespace CreditCalculator
             loan = new Loan(Convert.ToDecimal(txt_loanAmount.Text), Convert.ToDecimal(txt_interestRate.Text), Convert.ToInt32(txt_loanPeriod.Text));
 
             decimal totalCost = new RepaymentSchedule().CalculateTotalCost(loan);
-            lbl_totalCost.Text += (totalCost + loan.LoanAmount).ToString();
-            lbl_loanAmount.Text += loan.LoanAmount.ToString();
-            lbl_interestTotal.Text += totalCost.ToString();
-            lbl_repaymentAmount.Text += loan.CalculateMonthlyPayment().ToString();
+            lbl_totalCost.Text += (totalCost + loan.LoanAmount).ToString("N2") + " zł";
+            lbl_loanAmount.Text += loan.LoanAmount.ToString("N2") + " zł";
+            lbl_interestTotal.Text += totalCost.ToString("N2") + " zł";
+            lbl_repaymentAmount.Text += loan.CalculateMonthlyPayment().ToString("N2") + " zł";
 
         }
     }
