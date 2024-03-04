@@ -45,7 +45,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(79, 383);
+            this.button1.Location = new System.Drawing.Point(153, 184);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 33);
             this.button1.TabIndex = 0;
@@ -70,7 +70,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 62);
+            this.label1.Location = new System.Drawing.Point(44, 62);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 16);
             this.label1.TabIndex = 3;
@@ -104,7 +104,7 @@
             // lbl_totalCost
             // 
             this.lbl_totalCost.AutoSize = true;
-            this.lbl_totalCost.Location = new System.Drawing.Point(56, 215);
+            this.lbl_totalCost.Location = new System.Drawing.Point(41, 287);
             this.lbl_totalCost.Name = "lbl_totalCost";
             this.lbl_totalCost.Size = new System.Drawing.Size(149, 16);
             this.lbl_totalCost.TabIndex = 7;
@@ -113,7 +113,7 @@
             // lbl_repaymentAmount
             // 
             this.lbl_repaymentAmount.AutoSize = true;
-            this.lbl_repaymentAmount.Location = new System.Drawing.Point(59, 248);
+            this.lbl_repaymentAmount.Location = new System.Drawing.Point(41, 389);
             this.lbl_repaymentAmount.Name = "lbl_repaymentAmount";
             this.lbl_repaymentAmount.Size = new System.Drawing.Size(102, 16);
             this.lbl_repaymentAmount.TabIndex = 8;
@@ -122,7 +122,7 @@
             // lbl_loanAmount
             // 
             this.lbl_loanAmount.AutoSize = true;
-            this.lbl_loanAmount.Location = new System.Drawing.Point(351, 215);
+            this.lbl_loanAmount.Location = new System.Drawing.Point(41, 321);
             this.lbl_loanAmount.Name = "lbl_loanAmount";
             this.lbl_loanAmount.Size = new System.Drawing.Size(117, 16);
             this.lbl_loanAmount.TabIndex = 9;
@@ -131,7 +131,7 @@
             // lbl_interestTotal
             // 
             this.lbl_interestTotal.AutoSize = true;
-            this.lbl_interestTotal.Location = new System.Drawing.Point(538, 215);
+            this.lbl_interestTotal.Location = new System.Drawing.Point(41, 355);
             this.lbl_interestTotal.Name = "lbl_interestTotal";
             this.lbl_interestTotal.Size = new System.Drawing.Size(115, 16);
             this.lbl_interestTotal.TabIndex = 10;
@@ -139,12 +139,16 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(455, 266);
+            this.dataGridView1.Location = new System.Drawing.Point(459, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(657, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(657, 426);
             this.dataGridView1.TabIndex = 11;
             // 
             // MainForm

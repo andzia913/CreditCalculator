@@ -36,12 +36,8 @@ namespace CreditCalculator
             }
 
             return repaymentSchedule;
-
         
     }
-
-
-
         public decimal CalculateTotalCost(Loan loan)
         {
             List<Repayment> repaymentSchedule = CalculateRepaymentSchedule(loan);
