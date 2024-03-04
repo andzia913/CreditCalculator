@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CreditCalculator
 {
@@ -35,10 +36,12 @@ namespace CreditCalculator
             }
 
             return repaymentSchedule;
+
         
     }
 
-       
+
+
         public decimal CalculateTotalCost(Loan loan)
         {
             List<Repayment> repaymentSchedule = CalculateRepaymentSchedule(loan);
