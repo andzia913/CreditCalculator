@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.txt_loanAmount = new System.Windows.Forms.TextBox();
             this.txt_loanPeriod = new System.Windows.Forms.TextBox();
@@ -40,6 +41,7 @@
             this.lbl_loanAmount = new System.Windows.Forms.Label();
             this.lbl_interestTotal = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -193,6 +195,7 @@
         private System.Windows.Forms.Label lbl_loanAmount;
         private System.Windows.Forms.Label lbl_interestTotal;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
