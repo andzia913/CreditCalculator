@@ -17,11 +17,19 @@ namespace CreditCalculator
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void calculate_Click(object sender, EventArgs e)
         {
 
             dataGridView1.Columns.Clear();
-            Loan loan = new Loan(Convert.ToDecimal(txt_loanAmount.Text), Convert.ToDecimal(txt_interestRate.Text), Convert.ToInt32(txt_loanPeriod.Text));
+            Loan loan;
+            try 
+            {
+                loan = new Loan(Convert.ToDecimal(txt_loanAmount.Text), Convert.ToDecimal(txt_interestRate.Text), Convert.ToInt32(txt_loanPeriod.Text));
+            }catch
+            {
+                MessageBox.Show("Wprowadzono niepoprawne dane");
+                return;
+            }
             RepaymentSchedule repaymentSchedule = new RepaymentSchedule();
 
             decimal totalCost = repaymentSchedule.CalculateTotalCost(loan);
@@ -69,7 +77,8 @@ namespace CreditCalculator
             {
                 e.KeyChar = ',';
             }
-            e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == ',');
+            e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == ',' || e.KeyChar == (char)Keys.Back);
         }
+
     }
 }
