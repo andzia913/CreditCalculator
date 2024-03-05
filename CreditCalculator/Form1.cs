@@ -19,6 +19,7 @@ namespace CreditCalculator
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             dataGridView1.Columns.Clear();
             Loan loan = new Loan(Convert.ToDecimal(txt_loanAmount.Text), Convert.ToDecimal(txt_interestRate.Text), Convert.ToInt32(txt_loanPeriod.Text));
             RepaymentSchedule repaymentSchedule = new RepaymentSchedule();
@@ -44,6 +45,31 @@ namespace CreditCalculator
                 dataGridView1.Rows.Add(r.PaymentNumber, r.PaymentAmount.ToString("N2"), r.PrincipalAmount.ToString("N2"), r.InterestAmount.ToString("N2"), r.RemainingBalance.ToString("N2"));
             }
             
+        }
+
+        private void txt_loanAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            allowOnlyDecimalNumbers(sender, e);
+
+        }
+
+        private void txt_interestRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            allowOnlyDecimalNumbers(sender, e);
+        }
+
+        private void txt_loanPeriod_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar);
+        }
+
+        private void allowOnlyDecimalNumbers(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '.')
+            {
+                e.KeyChar = ',';
+            }
+            e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == ',');
         }
     }
 }

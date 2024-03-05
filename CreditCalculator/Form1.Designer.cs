@@ -59,6 +59,7 @@
             this.txt_loanAmount.Name = "txt_loanAmount";
             this.txt_loanAmount.Size = new System.Drawing.Size(100, 22);
             this.txt_loanAmount.TabIndex = 1;
+            this.txt_loanAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_loanAmount_KeyPress);
             // 
             // txt_loanPeriod
             // 
@@ -66,6 +67,7 @@
             this.txt_loanPeriod.Name = "txt_loanPeriod";
             this.txt_loanPeriod.Size = new System.Drawing.Size(100, 22);
             this.txt_loanPeriod.TabIndex = 2;
+            this.txt_loanPeriod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_loanPeriod_KeyPress);
             // 
             // label1
             // 
@@ -91,6 +93,7 @@
             this.txt_interestRate.Name = "txt_interestRate";
             this.txt_interestRate.Size = new System.Drawing.Size(100, 22);
             this.txt_interestRate.TabIndex = 5;
+            this.txt_interestRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_interestRate_KeyPress);
             // 
             // label3
             // 
