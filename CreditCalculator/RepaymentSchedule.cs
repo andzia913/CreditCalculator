@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace CreditCalculator
 {
@@ -19,6 +17,7 @@ namespace CreditCalculator
             decimal monthlyInterestRate = loan.MonthlyInterestRate();
             int totalNumberOfPayments = loan.TotalNumberOfPayments();
             decimal remainingBalance = loan.LoanAmount;
+            decimal overPayment = loan.OverPayment;
 
             for (int paymentNumber = 1; paymentNumber <= totalNumberOfPayments; paymentNumber++)
             {
@@ -30,9 +29,9 @@ namespace CreditCalculator
                     principalAmount = remainingBalance;
                 }
 
-                repaymentSchedule.Add(new Repayment(paymentNumber, monthlyPayment, principalAmount, interestAmount, remainingBalance));
+                repaymentSchedule.Add(new Repayment(paymentNumber, monthlyPayment, principalAmount, interestAmount, remainingBalance, overPayment));
 
-                remainingBalance -= principalAmount;
+                remainingBalance -= principalAmount + overPayment;
             }
 
             return repaymentSchedule;

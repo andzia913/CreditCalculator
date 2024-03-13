@@ -14,14 +14,16 @@ namespace CreditCalculator
             public decimal PrincipalAmount { get; set; } 
             public decimal InterestAmount { get; set; } 
             public decimal RemainingBalance { get; set; } 
+            public decimal OverPayment { get; set; }
 
-            public Repayment(int paymentNumber, decimal paymentAmount, decimal principalAmount, decimal interestAmount, decimal remainingBalance)
+            public Repayment(int paymentNumber, decimal paymentAmount, decimal principalAmount, decimal interestAmount, decimal remainingBalance, decimal overPayment)
             {
                 PaymentNumber = paymentNumber;
                 PaymentAmount = paymentAmount;
                 PrincipalAmount = principalAmount;
                 InterestAmount = interestAmount;
                 RemainingBalance = remainingBalance;
+                OverPayment = overPayment;
             }
         
     }

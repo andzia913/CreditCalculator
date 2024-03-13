@@ -33,7 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_calculate = new System.Windows.Forms.Button();
             this.txt_loanAmount = new System.Windows.Forms.TextBox();
             this.txt_loanPeriod = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,25 +52,28 @@
             this.kredytToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nadpłatyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.porównanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_overPayment = new System.Windows.Forms.TextBox();
+            this.btn_overPayment = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btn_calculate
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(178, 170);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 33);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Przelicz";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.calculate_Click);
+            this.btn_calculate.BackColor = System.Drawing.Color.White;
+            this.btn_calculate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_calculate.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_calculate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_calculate.Location = new System.Drawing.Point(178, 170);
+            this.btn_calculate.Name = "btn_calculate";
+            this.btn_calculate.Size = new System.Drawing.Size(132, 33);
+            this.btn_calculate.TabIndex = 0;
+            this.btn_calculate.Text = "Przelicz";
+            this.btn_calculate.UseVisualStyleBackColor = false;
+            this.btn_calculate.Click += new System.EventHandler(this.calculate_Click);
             // 
             // txt_loanAmount
             // 
@@ -232,7 +235,7 @@
             this.panel1.Controls.Add(this.txt_loanAmount);
             this.panel1.Controls.Add(this.txt_loanPeriod);
             this.panel1.Controls.Add(this.txt_interestRate);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btn_calculate);
             this.panel1.Location = new System.Drawing.Point(57, 49);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(439, 218);
@@ -281,6 +284,40 @@
             this.porównanieToolStripMenuItem.Size = new System.Drawing.Size(100, 24);
             this.porównanieToolStripMenuItem.Text = "Porównanie";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.ForeColor = System.Drawing.Color.Snow;
+            this.label4.Location = new System.Drawing.Point(29, 507);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(316, 20);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Dodaj cykliczną co miesięczną nadpłate";
+            // 
+            // txt_overPayment
+            // 
+            this.txt_overPayment.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txt_overPayment.Location = new System.Drawing.Point(102, 530);
+            this.txt_overPayment.Name = "txt_overPayment";
+            this.txt_overPayment.Size = new System.Drawing.Size(100, 27);
+            this.txt_overPayment.TabIndex = 16;
+            // 
+            // btn_overPayment
+            // 
+            this.btn_overPayment.BackColor = System.Drawing.Color.White;
+            this.btn_overPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_overPayment.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_overPayment.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_overPayment.Location = new System.Drawing.Point(235, 530);
+            this.btn_overPayment.Name = "btn_overPayment";
+            this.btn_overPayment.Size = new System.Drawing.Size(90, 33);
+            this.btn_overPayment.TabIndex = 17;
+            this.btn_overPayment.Text = "Dodaj";
+            this.btn_overPayment.UseVisualStyleBackColor = false;
+            this.btn_overPayment.Click += new System.EventHandler(this.btn_overPayment_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -289,6 +326,9 @@
             this.BackgroundImage = global::CreditCalculator.Properties.Resources.black_1072366_1280;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1281, 598);
+            this.Controls.Add(this.btn_overPayment);
+            this.Controls.Add(this.txt_overPayment);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
@@ -312,7 +352,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_calculate;
         private System.Windows.Forms.TextBox txt_loanAmount;
         private System.Windows.Forms.TextBox txt_loanPeriod;
         private System.Windows.Forms.Label label1;
@@ -331,6 +371,9 @@
         private System.Windows.Forms.ToolStripMenuItem kredytToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nadpłatyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem porównanieToolStripMenuItem;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txt_overPayment;
+        private System.Windows.Forms.Button btn_overPayment;
     }
 }
 
