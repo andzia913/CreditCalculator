@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CreditCalculator
 {
-    internal class Loan
+    public class Loan
     {
         
         public decimal LoanAmount { get; set; } 
