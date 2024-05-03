@@ -18,7 +18,11 @@ namespace CreditCalculator
             InitializeComponent();
         }
         Loan loan;
+        Loan loanWithOverPayment;
         RepaymentSchedule repaymentSchedule = new RepaymentSchedule();
+        RepaymentSchedule repaymentScheduleWithOverPayment = new RepaymentSchedule();
+        private RepaymentScheduleForm repaymentScheduleForm;
+        private RepaymentScheduleForm repaymentScheduleFormWithOverpayment;
 
         private void calculate_Click(object sender, EventArgs e)
         {
@@ -31,60 +35,18 @@ namespace CreditCalculator
                 MessageBox.Show("Wprowadzono niepoprawne dane");
                 return;
             }
-            displayLoanData(loan, repaymentSchedule);
-            generateRepaymentSchedule(loan, repaymentSchedule);
+            displayLoanData(loan, repaymentSchedule, lbl_totalCost, lbl_loanAmount, lbl_interestTotal, lbl_repaymentAmount);
         }
-        private void displayLoanData(Loan loan, RepaymentSchedule repaymentSchedule)
+        private void displayLoanData(Loan loan, RepaymentSchedule repaymentSchedule, Label totalCost, Label loanAmount, Label interestTotal, Label repaymentAmount = null, Label loanPeriod = null)
         {
-            decimal totalCost = repaymentSchedule.CalculateTotalCost(loan);
-            lbl_totalCost.Text = "Całkowity koszt kredytu: " + (totalCost + loan.LoanAmount).ToString("N2") + " zł";
-            lbl_loanAmount.Text = "Wartość pożyczki: " + loan.LoanAmount.ToString("N2") + " zł";
-            lbl_interestTotal.Text = "Suma odsetek: " + totalCost.ToString("N2") + " zł";
-            lbl_repaymentAmount.Text = "Miesięczna rata: " + loan.CalculateMonthlyPayment().ToString("N2") + " zł";
+            decimal totalCostCalc = repaymentSchedule.CalculateTotalCost(loan);
+            totalCost.Text = "Całkowity koszt kredytu: " + (totalCostCalc + loan.LoanAmount).ToString("N2") + " zł";
+            loanAmount.Text = "Wartość pożyczki: " + loan.LoanAmount.ToString("N2") + " zł";
+            interestTotal.Text = "Suma odsetek: " + totalCostCalc.ToString("N2") + " zł";
+            if(repaymentAmount != null) repaymentAmount.Text = "Miesięczna rata: " + loan.CalculateMonthlyPayment().ToString("N2") + " zł";
+            if(loanPeriod != null) loanPeriod.Text = "Okres kredytowania: " + repaymentSchedule.repaymentsCount / 12 +" lat";
         }
-        private void generateRepaymentSchedule(Loan loan, RepaymentSchedule repaymentSchedule)
-        {
-            dataGridView1.Columns.Clear();
 
-            List<Repayment> schedule = repaymentSchedule.CalculateRepaymentSchedule(loan);
-
-            dataGridView1.Columns.Add("indexColumn", "Lp.");
-            dataGridView1.Columns["indexColumn"].ReadOnly = true;
-
-            dataGridView1.Columns.Add("paymentAmountColumn", "Rata");
-            dataGridView1.Columns["paymentAmountColumn"].ReadOnly = true;
-
-            dataGridView1.Columns.Add("principalAmountColumn", "Kapitał");
-            dataGridView1.Columns["principalAmountColumn"].ReadOnly = true;
-
-            if (loan.OverPayment != 0)
-            {
-                dataGridView1.Columns.Add("overPaymentColumn", "Nadpłata");
-                dataGridView1.Columns["overPaymentColumn"].ReadOnly = false;
-            }
-            dataGridView1.Columns.Add("interestAmountColumn", "Odsetki");
-            dataGridView1.Columns["interestAmountColumn"].ReadOnly = true;
-
-            dataGridView1.Columns.Add("remainingBalanceColumn", "Pozostały do spłaty kapitał");
-            dataGridView1.Columns["remainingBalanceColumn"].ReadOnly = true;
-
-
-            foreach (Repayment r in schedule)
-            {
-                int rowIndex = dataGridView1.Rows.Add();
-
-                dataGridView1.Rows[rowIndex].Cells["indexColumn"].Value = r.PaymentNumber;
-                dataGridView1.Rows[rowIndex].Cells["principalAmountColumn"].Value = Math.Round(r.PrincipalAmount, 2);    
-                dataGridView1.Rows[rowIndex].Cells["paymentAmountColumn"].Value = Math.Round(r.PaymentAmount, 2);
-                dataGridView1.Rows[rowIndex].Cells["interestAmountColumn"].Value = Math.Round(r.InterestAmount, 2);
-                dataGridView1.Rows[rowIndex].Cells["remainingBalanceColumn"].Value = Math.Round(r.RemainingBalance, 2);
-
-                if (loan.OverPayment != 0)
-                {
-                    dataGridView1.Rows[rowIndex].Cells["overPaymentColumn"].Value = r.OverPayment.ToString("N2");
-                }
-            }
-        }
         private void txt_loanAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
             allowOnlyDecimalNumbers(sender, e);
@@ -112,8 +74,17 @@ namespace CreditCalculator
 
         private void btn_overPayment_Click(object sender, EventArgs e)
         {
-            loan.OverPayment = Convert.ToDecimal(txt_overPayment.Text);
-            generateRepaymentSchedule(loan, repaymentSchedule);
+            try
+            {
+                loanWithOverPayment = new Loan(Convert.ToDecimal(txt_loanAmount.Text), Convert.ToDecimal(txt_interestRate.Text), Convert.ToInt32(txt_loanPeriod.Text));
+                loanWithOverPayment.OverPayment = Convert.ToDecimal(txt_overPayment.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Wprowadzono niepoprawne dane");
+                return;
+            }
+            displayLoanData(loanWithOverPayment, repaymentScheduleWithOverPayment, lbl_totalCostOverPayment, lbl_loanAmountOverPayment, lbl_interestTotalOverPayment, null ,lbl_loanPeriod);
         }
 
         private void OverPaymentChanged(object sender, DataGridViewCellEventArgs e)
@@ -121,15 +92,30 @@ namespace CreditCalculator
 
         }
 
-        private RepaymentScheduleForm repaymentScheduleForm;
+        
         private void btn_OpenScheduleLoan_Click(object sender, EventArgs e)
         {
             if (repaymentScheduleForm == null && loan != null)
             {
                 repaymentScheduleForm = new RepaymentScheduleForm(loan);
             }
-            repaymentScheduleForm.Show();
+            repaymentScheduleForm?.ShowDialog(); // Zmieniłem .Show() na .ShowDialog(), aby zablokować dostęp do głównego formularza podczas otwartego okna, można to zmienić w zależności od potrzeb.
+        }
+        private void RepaymentScheduleForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            repaymentScheduleForm = null; // Ustawiamy pole repaymentScheduleForm na null po zamknięciu formularza
+        }
+
+        private void btn_openScheduleWithOverpayment_Click(object sender, EventArgs e)
+        {
+            if(repaymentScheduleFormWithOverpayment == null && loanWithOverPayment != null)
+            {
+                repaymentScheduleFormWithOverpayment = new RepaymentScheduleForm(loanWithOverPayment);
+            }
+            repaymentScheduleFormWithOverpayment?.ShowDialog();
+
 
         }
+
     }
 }

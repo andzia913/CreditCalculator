@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btn_calculate = new System.Windows.Forms.Button();
             this.txt_loanAmount = new System.Windows.Forms.TextBox();
@@ -44,17 +41,35 @@
             this.lbl_repaymentAmount = new System.Windows.Forms.Label();
             this.lbl_loanAmount = new System.Windows.Forms.Label();
             this.lbl_interestTotal = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_OpenScheduleLoan = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_overPayment = new System.Windows.Forms.TextBox();
             this.btn_overPayment = new System.Windows.Forms.Button();
-            this.btn_OpenScheduleLoan = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btn_oneOverPayment = new System.Windows.Forms.Button();
+            this.txt_oneOverPayment = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lbl_totalCostOverPayment = new System.Windows.Forms.Label();
+            this.lbl_loanAmountOverPayment = new System.Windows.Forms.Label();
+            this.btn_openScheduleWithOverpayment = new System.Windows.Forms.Button();
+            this.lbl_interestTotalOverPayment = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lbl_loanPeriod = new System.Windows.Forms.Label();
+            this.lbl_totalCostChange = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_calculate
@@ -125,11 +140,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.Color.Snow;
-            this.label3.Location = new System.Drawing.Point(114, 119);
+            this.label3.Location = new System.Drawing.Point(204, 120);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(137, 20);
+            this.label3.Size = new System.Drawing.Size(53, 20);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Oprocentowanie";
+            this.label3.Text = "RRSO";
             // 
             // lbl_totalCost
             // 
@@ -179,50 +194,6 @@
             this.lbl_interestTotal.TabIndex = 10;
             this.lbl_interestTotal.Text = "Wartość odsetek: ";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Rubik", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(3);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dataGridView1.Location = new System.Drawing.Point(595, 49);
-            this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(657, 560);
-            this.dataGridView1.TabIndex = 11;
-            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.OverPaymentChanged);
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
@@ -243,12 +214,23 @@
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.lbl_totalCost);
             this.panel2.Controls.Add(this.lbl_loanAmount);
+            this.panel2.Controls.Add(this.btn_OpenScheduleLoan);
             this.panel2.Controls.Add(this.lbl_interestTotal);
             this.panel2.Controls.Add(this.lbl_repaymentAmount);
-            this.panel2.Location = new System.Drawing.Point(57, 284);
+            this.panel2.Location = new System.Drawing.Point(614, 69);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(439, 183);
+            this.panel2.Size = new System.Drawing.Size(590, 183);
             this.panel2.TabIndex = 13;
+            // 
+            // btn_OpenScheduleLoan
+            // 
+            this.btn_OpenScheduleLoan.Location = new System.Drawing.Point(454, 49);
+            this.btn_OpenScheduleLoan.Name = "btn_OpenScheduleLoan";
+            this.btn_OpenScheduleLoan.Size = new System.Drawing.Size(100, 63);
+            this.btn_OpenScheduleLoan.TabIndex = 18;
+            this.btn_OpenScheduleLoan.Text = "Wyświetl harmonogram";
+            this.btn_OpenScheduleLoan.UseVisualStyleBackColor = true;
+            this.btn_OpenScheduleLoan.Click += new System.EventHandler(this.btn_OpenScheduleLoan_Click);
             // 
             // label4
             // 
@@ -256,16 +238,16 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label4.ForeColor = System.Drawing.Color.Snow;
-            this.label4.Location = new System.Drawing.Point(29, 507);
+            this.label4.Location = new System.Drawing.Point(23, 20);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(316, 20);
             this.label4.TabIndex = 15;
-            this.label4.Text = "Dodaj cykliczną co miesięczną nadpłate";
+            this.label4.Text = "Dodaj cykliczną co miesięczną nadpłatę";
             // 
             // txt_overPayment
             // 
             this.txt_overPayment.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.txt_overPayment.Location = new System.Drawing.Point(102, 530);
+            this.txt_overPayment.Location = new System.Drawing.Point(27, 54);
             this.txt_overPayment.Name = "txt_overPayment";
             this.txt_overPayment.Size = new System.Drawing.Size(100, 27);
             this.txt_overPayment.TabIndex = 16;
@@ -276,7 +258,7 @@
             this.btn_overPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_overPayment.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_overPayment.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_overPayment.Location = new System.Drawing.Point(235, 530);
+            this.btn_overPayment.Location = new System.Drawing.Point(190, 48);
             this.btn_overPayment.Name = "btn_overPayment";
             this.btn_overPayment.Size = new System.Drawing.Size(90, 33);
             this.btn_overPayment.TabIndex = 17;
@@ -284,15 +266,190 @@
             this.btn_overPayment.UseVisualStyleBackColor = false;
             this.btn_overPayment.Click += new System.EventHandler(this.btn_overPayment_Click);
             // 
-            // btn_OpenScheduleLoan
+            // panel3
             // 
-            this.btn_OpenScheduleLoan.Location = new System.Drawing.Point(485, 530);
-            this.btn_OpenScheduleLoan.Name = "btn_OpenScheduleLoan";
-            this.btn_OpenScheduleLoan.Size = new System.Drawing.Size(75, 23);
-            this.btn_OpenScheduleLoan.TabIndex = 18;
-            this.btn_OpenScheduleLoan.Text = "Wyświetl harmonogram";
-            this.btn_OpenScheduleLoan.UseVisualStyleBackColor = true;
-            this.btn_OpenScheduleLoan.Click += new System.EventHandler(this.btn_OpenScheduleLoan_Click);
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.txt_overPayment);
+            this.panel3.Controls.Add(this.btn_overPayment);
+            this.panel3.Location = new System.Drawing.Point(57, 299);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(439, 97);
+            this.panel3.TabIndex = 19;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.Controls.Add(this.btn_oneOverPayment);
+            this.panel4.Controls.Add(this.txt_oneOverPayment);
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Location = new System.Drawing.Point(57, 413);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(439, 102);
+            this.panel4.TabIndex = 20;
+            // 
+            // btn_oneOverPayment
+            // 
+            this.btn_oneOverPayment.BackColor = System.Drawing.Color.White;
+            this.btn_oneOverPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_oneOverPayment.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_oneOverPayment.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_oneOverPayment.Location = new System.Drawing.Point(190, 45);
+            this.btn_oneOverPayment.Name = "btn_oneOverPayment";
+            this.btn_oneOverPayment.Size = new System.Drawing.Size(90, 33);
+            this.btn_oneOverPayment.TabIndex = 18;
+            this.btn_oneOverPayment.Text = "Dodaj";
+            this.btn_oneOverPayment.UseVisualStyleBackColor = false;
+            // 
+            // txt_oneOverPayment
+            // 
+            this.txt_oneOverPayment.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txt_oneOverPayment.Location = new System.Drawing.Point(16, 45);
+            this.txt_oneOverPayment.Name = "txt_oneOverPayment";
+            this.txt_oneOverPayment.Size = new System.Drawing.Size(111, 27);
+            this.txt_oneOverPayment.TabIndex = 17;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.ForeColor = System.Drawing.Color.Snow;
+            this.label5.Location = new System.Drawing.Point(11, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(230, 20);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Dodaj jednorazową nadpłatę";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Transparent;
+            this.panel5.Controls.Add(this.lbl_totalCostChange);
+            this.panel5.Controls.Add(this.lbl_loanPeriod);
+            this.panel5.Controls.Add(this.lbl_totalCostOverPayment);
+            this.panel5.Controls.Add(this.lbl_loanAmountOverPayment);
+            this.panel5.Controls.Add(this.btn_openScheduleWithOverpayment);
+            this.panel5.Controls.Add(this.lbl_interestTotalOverPayment);
+            this.panel5.Location = new System.Drawing.Point(614, 299);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(590, 273);
+            this.panel5.TabIndex = 19;
+            // 
+            // lbl_totalCostOverPayment
+            // 
+            this.lbl_totalCostOverPayment.AutoSize = true;
+            this.lbl_totalCostOverPayment.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_totalCostOverPayment.Font = new System.Drawing.Font("Rubik", 10F);
+            this.lbl_totalCostOverPayment.ForeColor = System.Drawing.Color.Snow;
+            this.lbl_totalCostOverPayment.Location = new System.Drawing.Point(15, 25);
+            this.lbl_totalCostOverPayment.Name = "lbl_totalCostOverPayment";
+            this.lbl_totalCostOverPayment.Size = new System.Drawing.Size(206, 20);
+            this.lbl_totalCostOverPayment.TabIndex = 7;
+            this.lbl_totalCostOverPayment.Text = "Całkowity koszt kredytu: ";
+            // 
+            // lbl_loanAmountOverPayment
+            // 
+            this.lbl_loanAmountOverPayment.AutoSize = true;
+            this.lbl_loanAmountOverPayment.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_loanAmountOverPayment.Font = new System.Drawing.Font("Rubik", 10F);
+            this.lbl_loanAmountOverPayment.ForeColor = System.Drawing.Color.Snow;
+            this.lbl_loanAmountOverPayment.Location = new System.Drawing.Point(15, 62);
+            this.lbl_loanAmountOverPayment.Name = "lbl_loanAmountOverPayment";
+            this.lbl_loanAmountOverPayment.Size = new System.Drawing.Size(156, 20);
+            this.lbl_loanAmountOverPayment.TabIndex = 9;
+            this.lbl_loanAmountOverPayment.Text = "Pożyczona kwota: ";
+            // 
+            // btn_openScheduleWithOverpayment
+            // 
+            this.btn_openScheduleWithOverpayment.Location = new System.Drawing.Point(230, 183);
+            this.btn_openScheduleWithOverpayment.Name = "btn_openScheduleWithOverpayment";
+            this.btn_openScheduleWithOverpayment.Size = new System.Drawing.Size(100, 63);
+            this.btn_openScheduleWithOverpayment.TabIndex = 18;
+            this.btn_openScheduleWithOverpayment.Text = "Wyświetl harmonogram";
+            this.btn_openScheduleWithOverpayment.UseVisualStyleBackColor = true;
+            this.btn_openScheduleWithOverpayment.Click += new System.EventHandler(this.btn_openScheduleWithOverpayment_Click);
+            // 
+            // lbl_interestTotalOverPayment
+            // 
+            this.lbl_interestTotalOverPayment.AutoSize = true;
+            this.lbl_interestTotalOverPayment.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_interestTotalOverPayment.Font = new System.Drawing.Font("Rubik", 10F);
+            this.lbl_interestTotalOverPayment.ForeColor = System.Drawing.Color.Snow;
+            this.lbl_interestTotalOverPayment.Location = new System.Drawing.Point(15, 99);
+            this.lbl_interestTotalOverPayment.Name = "lbl_interestTotalOverPayment";
+            this.lbl_interestTotalOverPayment.Size = new System.Drawing.Size(147, 20);
+            this.lbl_interestTotalOverPayment.TabIndex = 10;
+            this.lbl_interestTotalOverPayment.Text = "Wartość odsetek: ";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Transparent;
+            this.panel6.Controls.Add(this.button3);
+            this.panel6.Controls.Add(this.button2);
+            this.panel6.Controls.Add(this.label10);
+            this.panel6.Location = new System.Drawing.Point(57, 521);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(439, 102);
+            this.panel6.TabIndex = 21;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button3.Location = new System.Drawing.Point(77, 45);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(90, 33);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "Edytuj";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button2.Location = new System.Drawing.Point(190, 45);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(90, 33);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "Dodaj";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label10.ForeColor = System.Drawing.Color.Snow;
+            this.label10.Location = new System.Drawing.Point(11, 13);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(449, 20);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Edytuj nadpłatę dla każdej raty osobno w hamonogramie";
+            // 
+            // lbl_loanPeriod
+            // 
+            this.lbl_loanPeriod.AutoSize = true;
+            this.lbl_loanPeriod.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_loanPeriod.Font = new System.Drawing.Font("Rubik", 10F);
+            this.lbl_loanPeriod.ForeColor = System.Drawing.Color.Snow;
+            this.lbl_loanPeriod.Location = new System.Drawing.Point(15, 137);
+            this.lbl_loanPeriod.Name = "lbl_loanPeriod";
+            this.lbl_loanPeriod.Size = new System.Drawing.Size(171, 20);
+            this.lbl_loanPeriod.TabIndex = 19;
+            this.lbl_loanPeriod.Text = "Okres kredytowania: ";
+            // 
+            // lbl_totalCostChange
+            // 
+            this.lbl_totalCostChange.AutoSize = true;
+            this.lbl_totalCostChange.Location = new System.Drawing.Point(387, 29);
+            this.lbl_totalCostChange.Name = "lbl_totalCostChange";
+            this.lbl_totalCostChange.Size = new System.Drawing.Size(44, 16);
+            this.lbl_totalCostChange.TabIndex = 20;
+            this.lbl_totalCostChange.Text = "label6";
             // 
             // MainForm
             // 
@@ -301,25 +458,31 @@
             this.BackColor = System.Drawing.Color.DarkGray;
             this.BackgroundImage = global::CreditCalculator.Properties.Resources.black_1072366_1280;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1281, 598);
-            this.Controls.Add(this.btn_OpenScheduleLoan);
-            this.Controls.Add(this.btn_overPayment);
-            this.Controls.Add(this.txt_overPayment);
-            this.Controls.Add(this.label4);
+            this.ClientSize = new System.Drawing.Size(1281, 634);
+            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dataGridView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.ShowInTaskbar = false;
             this.Text = "Kalkulator kredytu hipotecznego";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Click += new System.EventHandler(this.btn_OpenScheduleLoan_Click);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -336,7 +499,6 @@
         private System.Windows.Forms.Label lbl_repaymentAmount;
         private System.Windows.Forms.Label lbl_loanAmount;
         private System.Windows.Forms.Label lbl_interestTotal;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -344,6 +506,22 @@
         private System.Windows.Forms.TextBox txt_overPayment;
         private System.Windows.Forms.Button btn_overPayment;
         private System.Windows.Forms.Button btn_OpenScheduleLoan;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btn_oneOverPayment;
+        private System.Windows.Forms.TextBox txt_oneOverPayment;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label lbl_totalCostOverPayment;
+        private System.Windows.Forms.Label lbl_loanAmountOverPayment;
+        private System.Windows.Forms.Button btn_openScheduleWithOverpayment;
+        private System.Windows.Forms.Label lbl_interestTotalOverPayment;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label lbl_totalCostChange;
+        private System.Windows.Forms.Label lbl_loanPeriod;
     }
 }
 
