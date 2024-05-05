@@ -46,7 +46,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_OpenScheduleLoan = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.txt_overPayment = new System.Windows.Forms.TextBox();
+            this.txt_cyclicOverPayment = new System.Windows.Forms.TextBox();
             this.btn_overPayment = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -54,6 +54,7 @@
             this.txt_oneOverPayment = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lbl_loanPeriod = new System.Windows.Forms.Label();
             this.lbl_totalCostOverPayment = new System.Windows.Forms.Label();
             this.lbl_loanAmountOverPayment = new System.Windows.Forms.Label();
             this.btn_openScheduleWithOverpayment = new System.Windows.Forms.Button();
@@ -62,8 +63,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.lbl_loanPeriod = new System.Windows.Forms.Label();
             this.lbl_totalCostChange = new System.Windows.Forms.Label();
+            this.lbl_interestTotalChange = new System.Windows.Forms.Label();
+            this.lbl_loanPeriodChange = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -244,13 +246,13 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Dodaj cykliczną co miesięczną nadpłatę";
             // 
-            // txt_overPayment
+            // txt_cyclicOverPayment
             // 
-            this.txt_overPayment.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.txt_overPayment.Location = new System.Drawing.Point(27, 54);
-            this.txt_overPayment.Name = "txt_overPayment";
-            this.txt_overPayment.Size = new System.Drawing.Size(100, 27);
-            this.txt_overPayment.TabIndex = 16;
+            this.txt_cyclicOverPayment.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txt_cyclicOverPayment.Location = new System.Drawing.Point(27, 54);
+            this.txt_cyclicOverPayment.Name = "txt_cyclicOverPayment";
+            this.txt_cyclicOverPayment.Size = new System.Drawing.Size(100, 27);
+            this.txt_cyclicOverPayment.TabIndex = 16;
             // 
             // btn_overPayment
             // 
@@ -270,7 +272,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.txt_overPayment);
+            this.panel3.Controls.Add(this.txt_cyclicOverPayment);
             this.panel3.Controls.Add(this.btn_overPayment);
             this.panel3.Location = new System.Drawing.Point(57, 299);
             this.panel3.Name = "panel3";
@@ -324,6 +326,8 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Transparent;
+            this.panel5.Controls.Add(this.lbl_loanPeriodChange);
+            this.panel5.Controls.Add(this.lbl_interestTotalChange);
             this.panel5.Controls.Add(this.lbl_totalCostChange);
             this.panel5.Controls.Add(this.lbl_loanPeriod);
             this.panel5.Controls.Add(this.lbl_totalCostOverPayment);
@@ -334,6 +338,18 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(590, 273);
             this.panel5.TabIndex = 19;
+            // 
+            // lbl_loanPeriod
+            // 
+            this.lbl_loanPeriod.AutoSize = true;
+            this.lbl_loanPeriod.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_loanPeriod.Font = new System.Drawing.Font("Rubik", 10F);
+            this.lbl_loanPeriod.ForeColor = System.Drawing.Color.Snow;
+            this.lbl_loanPeriod.Location = new System.Drawing.Point(15, 137);
+            this.lbl_loanPeriod.Name = "lbl_loanPeriod";
+            this.lbl_loanPeriod.Size = new System.Drawing.Size(171, 20);
+            this.lbl_loanPeriod.TabIndex = 19;
+            this.lbl_loanPeriod.Text = "Okres kredytowania: ";
             // 
             // lbl_totalCostOverPayment
             // 
@@ -430,26 +446,38 @@
             this.label10.TabIndex = 16;
             this.label10.Text = "Edytuj nadpłatę dla każdej raty osobno w hamonogramie";
             // 
-            // lbl_loanPeriod
-            // 
-            this.lbl_loanPeriod.AutoSize = true;
-            this.lbl_loanPeriod.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_loanPeriod.Font = new System.Drawing.Font("Rubik", 10F);
-            this.lbl_loanPeriod.ForeColor = System.Drawing.Color.Snow;
-            this.lbl_loanPeriod.Location = new System.Drawing.Point(15, 137);
-            this.lbl_loanPeriod.Name = "lbl_loanPeriod";
-            this.lbl_loanPeriod.Size = new System.Drawing.Size(171, 20);
-            this.lbl_loanPeriod.TabIndex = 19;
-            this.lbl_loanPeriod.Text = "Okres kredytowania: ";
-            // 
             // lbl_totalCostChange
             // 
             this.lbl_totalCostChange.AutoSize = true;
-            this.lbl_totalCostChange.Location = new System.Drawing.Point(387, 29);
+            this.lbl_totalCostChange.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_totalCostChange.Font = new System.Drawing.Font("Rubik", 10F);
+            this.lbl_totalCostChange.ForeColor = System.Drawing.Color.PaleGreen;
+            this.lbl_totalCostChange.Location = new System.Drawing.Point(337, 20);
             this.lbl_totalCostChange.Name = "lbl_totalCostChange";
-            this.lbl_totalCostChange.Size = new System.Drawing.Size(44, 16);
-            this.lbl_totalCostChange.TabIndex = 20;
-            this.lbl_totalCostChange.Text = "label6";
+            this.lbl_totalCostChange.Size = new System.Drawing.Size(0, 20);
+            this.lbl_totalCostChange.TabIndex = 21;
+            // 
+            // lbl_interestTotalChange
+            // 
+            this.lbl_interestTotalChange.AutoSize = true;
+            this.lbl_interestTotalChange.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_interestTotalChange.Font = new System.Drawing.Font("Rubik", 10F);
+            this.lbl_interestTotalChange.ForeColor = System.Drawing.Color.PaleGreen;
+            this.lbl_interestTotalChange.Location = new System.Drawing.Point(337, 99);
+            this.lbl_interestTotalChange.Name = "lbl_interestTotalChange";
+            this.lbl_interestTotalChange.Size = new System.Drawing.Size(0, 20);
+            this.lbl_interestTotalChange.TabIndex = 22;
+            // 
+            // lbl_loanPeriodChange
+            // 
+            this.lbl_loanPeriodChange.AutoSize = true;
+            this.lbl_loanPeriodChange.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_loanPeriodChange.Font = new System.Drawing.Font("Rubik", 10F);
+            this.lbl_loanPeriodChange.ForeColor = System.Drawing.Color.PaleGreen;
+            this.lbl_loanPeriodChange.Location = new System.Drawing.Point(337, 137);
+            this.lbl_loanPeriodChange.Name = "lbl_loanPeriodChange";
+            this.lbl_loanPeriodChange.Size = new System.Drawing.Size(0, 20);
+            this.lbl_loanPeriodChange.TabIndex = 23;
             // 
             // MainForm
             // 
@@ -503,7 +531,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txt_overPayment;
+        private System.Windows.Forms.TextBox txt_cyclicOverPayment;
         private System.Windows.Forms.Button btn_overPayment;
         private System.Windows.Forms.Button btn_OpenScheduleLoan;
         private System.Windows.Forms.Panel panel3;
@@ -520,8 +548,10 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label lbl_totalCostChange;
         private System.Windows.Forms.Label lbl_loanPeriod;
+        private System.Windows.Forms.Label lbl_loanPeriodChange;
+        private System.Windows.Forms.Label lbl_interestTotalChange;
+        private System.Windows.Forms.Label lbl_totalCostChange;
     }
 }
 

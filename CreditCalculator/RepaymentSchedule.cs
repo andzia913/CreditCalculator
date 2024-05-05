@@ -18,7 +18,7 @@ namespace CreditCalculator
             decimal monthlyInterestRate = loan.MonthlyInterestRate();
             int totalNumberOfPayments = loan.TotalNumberOfPayments();
             decimal remainingBalance = loan.LoanAmount;
-            decimal overPayment = loan.OverPayment;
+            decimal overPayment = loan.CyclicOverPayment;
 
             for (int paymentNumber = 1; paymentNumber <= totalNumberOfPayments; paymentNumber++)
             {

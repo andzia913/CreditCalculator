@@ -26,6 +26,7 @@ namespace CreditCalculator
         {
             RepaymentSchedule repaymentSchedule = new RepaymentSchedule();
             dataGridView2.Columns.Clear();
+            dataGridView2.ReadOnly = false;
 
             List<Repayment> schedule = repaymentSchedule.CalculateRepaymentSchedule(loan);
 
@@ -38,7 +39,7 @@ namespace CreditCalculator
             dataGridView2.Columns.Add("principalAmountColumn", "Kapitał");
             dataGridView2.Columns["principalAmountColumn"].ReadOnly = true;
 
-            if (loan.OverPayment != 0)
+            if (loan.CyclicOverPayment != 0)
             {
                 dataGridView2.Columns.Add("overPaymentColumn", "Nadpłata");
                 dataGridView2.Columns["overPaymentColumn"].ReadOnly = false;
@@ -61,12 +62,26 @@ namespace CreditCalculator
                 dataGridView2.Rows[rowIndex].Cells["interestAmountColumn"].Value = Math.Round(r.InterestAmount, 2);
                 dataGridView2.Rows[rowIndex].Cells["remainingBalanceColumn"].Value = Math.Round(r.RemainingBalance, 2);
 
-                if (loan.OverPayment != 0)
+                if (loan.CyclicOverPayment != 0)
                 {
                     dataGridView2.Rows[rowIndex].Cells["overPaymentColumn"].Value = r.OverPayment.ToString("N2");
                 }
             }
         }
+        public event EventHandler<OverPaymentChangedEventArgs> OverPaymentChanged;
+
+        private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridView2.Columns["overPaymentColumn"].Index && e.RowIndex >= 0)
+            {
+                int rowIndex = e.RowIndex;
+                decimal overPayment = Convert.ToDecimal(dataGridView2.Rows[rowIndex].Cells["overPaymentColumn"].Value);
+
+                // Wysyłamy informacje o zmianie nadpłaty poprzez wywołanie zdarzenia
+                OverPaymentChanged?.Invoke(this, new OverPaymentChangedEventArgs(rowIndex, overPayment));
+            }
+        }
+
 
     }
 }

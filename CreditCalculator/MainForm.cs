@@ -36,6 +36,15 @@ namespace CreditCalculator
                 return;
             }
             displayLoanData(loan, repaymentSchedule, lbl_totalCost, lbl_loanAmount, lbl_interestTotal, lbl_repaymentAmount);
+            if(loanWithOverPayment != null)
+            {
+                lbl_loanAmountOverPayment.Text = "Wartość pożyczki: ";
+                lbl_interestTotalOverPayment.Text = "Suma odsetek: ";
+                lbl_totalCostOverPayment.Text = "Całkowity koszt kredytu: ";
+                lbl_loanPeriod.Text = "Okres kredytowania: ";
+                lbl_interestTotalChange.Text = "";
+                lbl_loanPeriodChange.Text = "";
+            }
         }
         private void displayLoanData(Loan loan, RepaymentSchedule repaymentSchedule, Label totalCost, Label loanAmount, Label interestTotal, Label repaymentAmount = null, Label loanPeriod = null)
         {
@@ -46,7 +55,11 @@ namespace CreditCalculator
             if(repaymentAmount != null) repaymentAmount.Text = "Miesięczna rata: " + loan.CalculateMonthlyPayment().ToString("N2") + " zł";
             if(loanPeriod != null) loanPeriod.Text = "Okres kredytowania: " + repaymentSchedule.repaymentsCount / 12 +" lat";
         }
-
+        private void displayOverPaymentChange()
+        {
+            lbl_interestTotalChange.Text = "mniej o: "+(repaymentSchedule.CalculateTotalCost(loan) - repaymentSchedule.CalculateTotalCost(loanWithOverPayment)).ToString("N2") + " zł";
+            lbl_loanPeriodChange.Text = "skrócony o: " +(loan.LoanPeriod - repaymentScheduleWithOverPayment.repaymentsCount/12).ToString() +" lat";
+        }
         private void txt_loanAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
             allowOnlyDecimalNumbers(sender, e);
@@ -77,7 +90,7 @@ namespace CreditCalculator
             try
             {
                 loanWithOverPayment = new Loan(Convert.ToDecimal(txt_loanAmount.Text), Convert.ToDecimal(txt_interestRate.Text), Convert.ToInt32(txt_loanPeriod.Text));
-                loanWithOverPayment.OverPayment = Convert.ToDecimal(txt_overPayment.Text);
+                loanWithOverPayment.CyclicOverPayment = Convert.ToDecimal(txt_cyclicOverPayment.Text);
             }
             catch
             {
@@ -85,6 +98,7 @@ namespace CreditCalculator
                 return;
             }
             displayLoanData(loanWithOverPayment, repaymentScheduleWithOverPayment, lbl_totalCostOverPayment, lbl_loanAmountOverPayment, lbl_interestTotalOverPayment, null ,lbl_loanPeriod);
+            displayOverPaymentChange();
         }
 
         private void OverPaymentChanged(object sender, DataGridViewCellEventArgs e)
@@ -111,11 +125,17 @@ namespace CreditCalculator
             if(repaymentScheduleFormWithOverpayment == null && loanWithOverPayment != null)
             {
                 repaymentScheduleFormWithOverpayment = new RepaymentScheduleForm(loanWithOverPayment);
+                repaymentScheduleFormWithOverpayment.OverPaymentChanged += repaymentScheduleFormWithOverpayment_OverPaymentChanged; // Podłączamy obsługę zdarzenia
+
             }
             repaymentScheduleFormWithOverpayment?.ShowDialog();
-
-
         }
+        private void repaymentScheduleFormWithOverpayment_OverPaymentChanged(object sender, OverPaymentChangedEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            decimal overPayment = e.OverPayment;
 
+            // Tutaj możesz zaktualizować odpowiednie dane w MainForm na podstawie otrzymanych informacji
+        }
     }
 }
