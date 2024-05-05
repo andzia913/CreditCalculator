@@ -14,6 +14,7 @@ namespace CreditCalculator
     {
         private Loan loan;
 
+
         // Publiczny konstruktor, który przyjmuje parametr loan
         public RepaymentScheduleForm(Loan loan)
         {
@@ -22,7 +23,7 @@ namespace CreditCalculator
             RepaymentScheduleForm_Load(this, null);
         }
 
-        private void RepaymentScheduleForm_Load(object sender, EventArgs e)
+        public void RepaymentScheduleForm_Load(object sender, EventArgs e)
         {
             RepaymentSchedule repaymentSchedule = new RepaymentSchedule();
             dataGridView2.Columns.Clear();
@@ -49,7 +50,6 @@ namespace CreditCalculator
 
             dataGridView2.Columns.Add("remainingBalanceColumn", "Pozostały do spłaty kapitał");
             dataGridView2.Columns["remainingBalanceColumn"].ReadOnly = true;
-
 
 
             foreach (Repayment r in schedule)
@@ -80,6 +80,7 @@ namespace CreditCalculator
                 // Wysyłamy informacje o zmianie nadpłaty poprzez wywołanie zdarzenia
                 OverPaymentChanged?.Invoke(this, new OverPaymentChangedEventArgs(rowIndex, overPayment));
             }
+
         }
 
 

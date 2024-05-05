@@ -18,42 +18,69 @@ namespace CreditCalculator
             decimal monthlyInterestRate = loan.MonthlyInterestRate();
             int totalNumberOfPayments = loan.TotalNumberOfPayments();
             decimal remainingBalance = loan.LoanAmount;
-            decimal overPayment = loan.CyclicOverPayment;
+            decimal cyclicOverPayment = loan.CyclicOverPayment;
+            decimal oneTimeOverPayment = loan.OneTimeOverPayment;
+            OverPaymentChangedEventArgs personalizedOverPayment = loan.PersonalizedOverPayment;
 
             for (int paymentNumber = 1; paymentNumber <= totalNumberOfPayments; paymentNumber++)
             {
-                if (remainingBalance <= 0)
+                if (remainingBalance <= 0) break;
+                if (cyclicOverPayment != 0)
                 {
-                    break; // Przerywamy pętlę, jeśli pozostała kwota do spłaty wynosi zero lub mniej
+                    decimal interestAmount = remainingBalance * monthlyInterestRate;
+                    decimal principalAmount = monthlyPayment - interestAmount;
+                    if (remainingBalance < principalAmount) principalAmount = remainingBalance;
+                    
+                    decimal currentPrincipalAmount = principalAmount += cyclicOverPayment;
+                    remainingBalance -= currentPrincipalAmount;
+                    if (remainingBalance <= 0) remainingBalance = 0;
+                    repaymentSchedule.Add(new Repayment(paymentNumber, monthlyPayment, principalAmount, interestAmount, remainingBalance, cyclicOverPayment));
+                }
+                else if (oneTimeOverPayment != 0)
+                {
+                    decimal interestAmount = remainingBalance * monthlyInterestRate;
+                    decimal principalAmount = monthlyPayment - interestAmount;
+                    if (remainingBalance < principalAmount) principalAmount = remainingBalance;
+                    decimal currentPrincipalAmount = principalAmount;
+                    if (paymentNumber == 1) {currentPrincipalAmount += oneTimeOverPayment;}
+                    else oneTimeOverPayment = 0;
+                    remainingBalance -= currentPrincipalAmount;
+                    if (remainingBalance <= 0) remainingBalance = 0;
+                    repaymentSchedule.Add(new Repayment(paymentNumber, monthlyPayment, principalAmount, interestAmount, remainingBalance, oneTimeOverPayment));
+                }
+                else if(personalizedOverPayment != null)
+                {
+                    decimal interestAmount = remainingBalance * monthlyInterestRate;
+                    decimal principalAmount = monthlyPayment - interestAmount;
+                    if (remainingBalance < principalAmount) principalAmount = remainingBalance;
+                    decimal currentPrincipalAmount = principalAmount;
+                    if (paymentNumber == personalizedOverPayment.RowIndex) 
+                    {
+                        currentPrincipalAmount += personalizedOverPayment.OverPayment;
+                    }
+                    else personalizedOverPayment = null;
+                    remainingBalance -= currentPrincipalAmount;
+                    if (remainingBalance <= 0) remainingBalance = 0;
+                    decimal overPaymentToRow = paymentNumber == personalizedOverPayment.RowIndex ? personalizedOverPayment.OverPayment : cyclicOverPayment;
+                    repaymentSchedule.Add(new Repayment(paymentNumber, monthlyPayment, principalAmount, interestAmount, remainingBalance, overPaymentToRow));
+                }
+                else
+                {
+                    decimal interestAmount = remainingBalance * monthlyInterestRate;
+                    decimal principalAmount = monthlyPayment - interestAmount;
+                    if (remainingBalance < principalAmount) principalAmount = remainingBalance;
+                    remainingBalance -= principalAmount;
+                    if (remainingBalance <= 0) remainingBalance = 0;
+                    repaymentSchedule.Add(new Repayment(paymentNumber, monthlyPayment, principalAmount, interestAmount, remainingBalance, 0));
                 }
 
-                decimal interestAmount = remainingBalance * monthlyInterestRate;
-                decimal principalAmount = monthlyPayment - interestAmount;
-
-                // Sprawdzamy, czy pozostała kwota do spłaty jest mniejsza niż główna część spłaty
-                if (remainingBalance < principalAmount)
-                {
-                    // Jeśli tak, ustalamy główną część spłaty jako pozostałą kwotę do spłaty
-                    principalAmount = remainingBalance;
-                }
-
-                // Dodajemy nadpłatę do głównej części spłaty, jeśli istnieje
-                principalAmount += overPayment;
-
-                // Sprawdzamy, czy nadpłata nie spowoduje ujemnej pozostałej kwoty do spłaty
-                remainingBalance -= principalAmount;
-                if (remainingBalance < 0)
-                {
-                    remainingBalance = 0;
-                }
-
-                repaymentSchedule.Add(new Repayment(paymentNumber, monthlyPayment, principalAmount, interestAmount, remainingBalance, overPayment));
             }
 
             repaymentsCount = repaymentSchedule.Count;
 
             return repaymentSchedule;
         }
+
 
         public decimal CalculateTotalCost(Loan loan)
         {

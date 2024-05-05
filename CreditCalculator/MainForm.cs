@@ -125,17 +125,18 @@ namespace CreditCalculator
             if(repaymentScheduleFormWithOverpayment == null && loanWithOverPayment != null)
             {
                 repaymentScheduleFormWithOverpayment = new RepaymentScheduleForm(loanWithOverPayment);
-                repaymentScheduleFormWithOverpayment.OverPaymentChanged += repaymentScheduleFormWithOverpayment_OverPaymentChanged; // Podłączamy obsługę zdarzenia
-
+                repaymentScheduleFormWithOverpayment.OverPaymentChanged += repaymentScheduleFormWithOverpayment_OverPaymentChanged;
             }
             repaymentScheduleFormWithOverpayment?.ShowDialog();
         }
+        public event EventHandler LoanChanged;
+
         private void repaymentScheduleFormWithOverpayment_OverPaymentChanged(object sender, OverPaymentChangedEventArgs e)
         {
             int rowIndex = e.RowIndex;
             decimal overPayment = e.OverPayment;
-
-            // Tutaj możesz zaktualizować odpowiednie dane w MainForm na podstawie otrzymanych informacji
+            loanWithOverPayment.PersonalizedOverPayment = new OverPaymentChangedEventArgs(rowIndex, overPayment);
+            repaymentScheduleFormWithOverpayment.RepaymentScheduleForm_Load(sender, e);
         }
     }
 }

@@ -13,13 +13,18 @@ namespace CreditCalculator
         public decimal InterestRate { get; set; } 
         public int LoanPeriod { get; set; } 
         public decimal CyclicOverPayment { get; set; }
+        public decimal OneTimeOverPayment { get; set; }
+        public OverPaymentChangedEventArgs PersonalizedOverPayment { get; set; }
 
-        public Loan(decimal loanAmount, decimal interestRate, int loanPeriod, decimal overPayment = 0)
+
+        public Loan(decimal loanAmount, decimal interestRate, int loanPeriod, decimal cyclicOverPayment = 0, decimal oneTimeOverPayment = 0, OverPaymentChangedEventArgs personalizedOverPayment = null)
         {
             LoanAmount = loanAmount;
             InterestRate = interestRate;
             LoanPeriod = loanPeriod;
-            CyclicOverPayment = overPayment;
+            CyclicOverPayment = cyclicOverPayment;
+            OneTimeOverPayment = oneTimeOverPayment;
+            PersonalizedOverPayment = personalizedOverPayment;
         }
 
 
