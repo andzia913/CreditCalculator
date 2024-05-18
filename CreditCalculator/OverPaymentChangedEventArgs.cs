@@ -9,13 +9,13 @@ namespace CreditCalculator
 
     public class OverPaymentChangedEventArgs : EventArgs
     {
-        public int RowIndex { get; }
-        public decimal OverPayment { get; }
+        public int RowIndex { get; set;  }
+        public decimal OverPayment { get; set; }
 
         public OverPaymentChangedEventArgs(int rowIndex, decimal overPayment)
         {
-            RowIndex = rowIndex;
-            OverPayment = overPayment;
+            this.RowIndex = rowIndex;
+            this.OverPayment = overPayment;
         }
     }
 

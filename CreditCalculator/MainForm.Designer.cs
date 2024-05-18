@@ -54,18 +54,18 @@
             this.txt_oneOverPayment = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lbl_loanPeriodChange = new System.Windows.Forms.Label();
+            this.lbl_interestTotalChange = new System.Windows.Forms.Label();
+            this.lbl_totalCostChange = new System.Windows.Forms.Label();
             this.lbl_loanPeriod = new System.Windows.Forms.Label();
             this.lbl_totalCostOverPayment = new System.Windows.Forms.Label();
             this.lbl_loanAmountOverPayment = new System.Windows.Forms.Label();
             this.btn_openScheduleWithOverpayment = new System.Windows.Forms.Button();
             this.lbl_interestTotalOverPayment = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_editSchedule = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.lbl_totalCostChange = new System.Windows.Forms.Label();
-            this.lbl_interestTotalChange = new System.Windows.Forms.Label();
-            this.lbl_loanPeriodChange = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -266,7 +266,7 @@
             this.btn_overPayment.TabIndex = 17;
             this.btn_overPayment.Text = "Dodaj";
             this.btn_overPayment.UseVisualStyleBackColor = false;
-            this.btn_overPayment.Click += new System.EventHandler(this.btn_overPayment_Click);
+            this.btn_overPayment.Click += new System.EventHandler(this.btn_cyclicOverPayment_Click);
             // 
             // panel3
             // 
@@ -302,6 +302,7 @@
             this.btn_oneOverPayment.TabIndex = 18;
             this.btn_oneOverPayment.Text = "Dodaj";
             this.btn_oneOverPayment.UseVisualStyleBackColor = false;
+            this.btn_oneOverPayment.Click += new System.EventHandler(this.btn_oneTimeOverPayment_Click);
             // 
             // txt_oneOverPayment
             // 
@@ -338,6 +339,39 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(590, 273);
             this.panel5.TabIndex = 19;
+            // 
+            // lbl_loanPeriodChange
+            // 
+            this.lbl_loanPeriodChange.AutoSize = true;
+            this.lbl_loanPeriodChange.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_loanPeriodChange.Font = new System.Drawing.Font("Rubik", 10F);
+            this.lbl_loanPeriodChange.ForeColor = System.Drawing.Color.PaleGreen;
+            this.lbl_loanPeriodChange.Location = new System.Drawing.Point(337, 137);
+            this.lbl_loanPeriodChange.Name = "lbl_loanPeriodChange";
+            this.lbl_loanPeriodChange.Size = new System.Drawing.Size(0, 20);
+            this.lbl_loanPeriodChange.TabIndex = 23;
+            // 
+            // lbl_interestTotalChange
+            // 
+            this.lbl_interestTotalChange.AutoSize = true;
+            this.lbl_interestTotalChange.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_interestTotalChange.Font = new System.Drawing.Font("Rubik", 10F);
+            this.lbl_interestTotalChange.ForeColor = System.Drawing.Color.PaleGreen;
+            this.lbl_interestTotalChange.Location = new System.Drawing.Point(337, 99);
+            this.lbl_interestTotalChange.Name = "lbl_interestTotalChange";
+            this.lbl_interestTotalChange.Size = new System.Drawing.Size(0, 20);
+            this.lbl_interestTotalChange.TabIndex = 22;
+            // 
+            // lbl_totalCostChange
+            // 
+            this.lbl_totalCostChange.AutoSize = true;
+            this.lbl_totalCostChange.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_totalCostChange.Font = new System.Drawing.Font("Rubik", 10F);
+            this.lbl_totalCostChange.ForeColor = System.Drawing.Color.PaleGreen;
+            this.lbl_totalCostChange.Location = new System.Drawing.Point(337, 20);
+            this.lbl_totalCostChange.Name = "lbl_totalCostChange";
+            this.lbl_totalCostChange.Size = new System.Drawing.Size(0, 20);
+            this.lbl_totalCostChange.TabIndex = 21;
             // 
             // lbl_loanPeriod
             // 
@@ -400,7 +434,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Transparent;
-            this.panel6.Controls.Add(this.button3);
+            this.panel6.Controls.Add(this.btn_editSchedule);
             this.panel6.Controls.Add(this.button2);
             this.panel6.Controls.Add(this.label10);
             this.panel6.Location = new System.Drawing.Point(57, 521);
@@ -408,18 +442,19 @@
             this.panel6.Size = new System.Drawing.Size(439, 102);
             this.panel6.TabIndex = 21;
             // 
-            // button3
+            // btn_editSchedule
             // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button3.Location = new System.Drawing.Point(77, 45);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(90, 33);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Edytuj";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btn_editSchedule.BackColor = System.Drawing.Color.White;
+            this.btn_editSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_editSchedule.Font = new System.Drawing.Font("Rubik", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_editSchedule.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_editSchedule.Location = new System.Drawing.Point(77, 45);
+            this.btn_editSchedule.Name = "btn_editSchedule";
+            this.btn_editSchedule.Size = new System.Drawing.Size(90, 33);
+            this.btn_editSchedule.TabIndex = 19;
+            this.btn_editSchedule.Text = "Edytuj";
+            this.btn_editSchedule.UseVisualStyleBackColor = false;
+            this.btn_editSchedule.Click += new System.EventHandler(this.btn_editSchedule_Click);
             // 
             // button2
             // 
@@ -429,9 +464,9 @@
             this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button2.Location = new System.Drawing.Point(190, 45);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 33);
+            this.button2.Size = new System.Drawing.Size(174, 33);
             this.button2.TabIndex = 18;
-            this.button2.Text = "Dodaj";
+            this.button2.Text = "Wyczyść zmiany";
             this.button2.UseVisualStyleBackColor = false;
             // 
             // label10
@@ -445,39 +480,6 @@
             this.label10.Size = new System.Drawing.Size(449, 20);
             this.label10.TabIndex = 16;
             this.label10.Text = "Edytuj nadpłatę dla każdej raty osobno w hamonogramie";
-            // 
-            // lbl_totalCostChange
-            // 
-            this.lbl_totalCostChange.AutoSize = true;
-            this.lbl_totalCostChange.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_totalCostChange.Font = new System.Drawing.Font("Rubik", 10F);
-            this.lbl_totalCostChange.ForeColor = System.Drawing.Color.PaleGreen;
-            this.lbl_totalCostChange.Location = new System.Drawing.Point(337, 20);
-            this.lbl_totalCostChange.Name = "lbl_totalCostChange";
-            this.lbl_totalCostChange.Size = new System.Drawing.Size(0, 20);
-            this.lbl_totalCostChange.TabIndex = 21;
-            // 
-            // lbl_interestTotalChange
-            // 
-            this.lbl_interestTotalChange.AutoSize = true;
-            this.lbl_interestTotalChange.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_interestTotalChange.Font = new System.Drawing.Font("Rubik", 10F);
-            this.lbl_interestTotalChange.ForeColor = System.Drawing.Color.PaleGreen;
-            this.lbl_interestTotalChange.Location = new System.Drawing.Point(337, 99);
-            this.lbl_interestTotalChange.Name = "lbl_interestTotalChange";
-            this.lbl_interestTotalChange.Size = new System.Drawing.Size(0, 20);
-            this.lbl_interestTotalChange.TabIndex = 22;
-            // 
-            // lbl_loanPeriodChange
-            // 
-            this.lbl_loanPeriodChange.AutoSize = true;
-            this.lbl_loanPeriodChange.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_loanPeriodChange.Font = new System.Drawing.Font("Rubik", 10F);
-            this.lbl_loanPeriodChange.ForeColor = System.Drawing.Color.PaleGreen;
-            this.lbl_loanPeriodChange.Location = new System.Drawing.Point(337, 137);
-            this.lbl_loanPeriodChange.Name = "lbl_loanPeriodChange";
-            this.lbl_loanPeriodChange.Size = new System.Drawing.Size(0, 20);
-            this.lbl_loanPeriodChange.TabIndex = 23;
             // 
             // MainForm
             // 
@@ -547,7 +549,7 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_editSchedule;
         private System.Windows.Forms.Label lbl_loanPeriod;
         private System.Windows.Forms.Label lbl_loanPeriodChange;
         private System.Windows.Forms.Label lbl_interestTotalChange;

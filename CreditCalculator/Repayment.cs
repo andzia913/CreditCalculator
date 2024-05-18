@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CreditCalculator
 {
-    internal class Repayment
+    public class Repayment
     {
      
             public int PaymentNumber { get; set; } 
