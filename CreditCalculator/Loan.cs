@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CreditCalculator
 {
@@ -42,7 +43,15 @@ namespace CreditCalculator
         }
         public decimal CalculateMonthlyPayment()
         {
-            decimal monthlyPayment = LoanAmount * ((decimal)Math.Pow(1 + (double)MonthlyInterestRate(), TotalNumberOfPayments()) * MonthlyInterestRate()) / ((decimal)Math.Pow(1 + (double)MonthlyInterestRate(), TotalNumberOfPayments()) - 1);
+            decimal monthlyPayment;
+            try
+            {
+                monthlyPayment = LoanAmount * ((decimal)Math.Pow(1 + (double)MonthlyInterestRate(), TotalNumberOfPayments()) * MonthlyInterestRate()) / ((decimal)Math.Pow(1 + (double)MonthlyInterestRate(), TotalNumberOfPayments()) - 1);
+            }
+            catch {
+                MessageBox.Show("Wprowadzono nie poprawne dane");
+                return 0;
+            }
             return monthlyPayment;
         }
     }

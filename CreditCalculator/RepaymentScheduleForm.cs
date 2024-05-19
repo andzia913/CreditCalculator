@@ -23,11 +23,10 @@ namespace CreditCalculator
             this.repaymentSchedule = repaymentSchedule;
             this.isEditMode = isEditMode;
             this.basicSchedule = basicSchedule; 
-            RepaymentScheduleForm_Load(this, null);
-            //dataGridView2.CellEndEdit += dataGridView2_CellEndEdit; 
+            RepaymentScheduleForm_Load();
         }
 
-        public void RepaymentScheduleForm_Load(object sender, EventArgs e)
+        public void RepaymentScheduleForm_Load(object sender = null, EventArgs e = null)
         {
             dataGridView2.Columns.Clear();
             dataGridView2.ReadOnly = false;
@@ -87,7 +86,6 @@ namespace CreditCalculator
                 int rowIndex = e.RowIndex;
                 decimal overPayment = Convert.ToDecimal(dataGridView2.Rows[rowIndex].Cells["overPaymentColumn"].Value);
                 OverPaymentChanged?.Invoke(this, new OverPaymentChangedEventArgs(rowIndex, overPayment));
-                //UpdateRemainingBalances();
             }
 
         }
@@ -97,22 +95,5 @@ namespace CreditCalculator
             dataGridView2.Rows.Clear();
             fillGridRows(repaymentSchedule);
         }
-        /*private void UpdateRemainingBalances()
-        {
-            decimal remainingBalance = repaymentSchedule.loan.LoanAmount;
-            foreach (DataGridViewRow row in dataGridView2.Rows)
-            {
-                decimal principalAmount = Convert.ToDecimal(row.Cells["principalAmountColumn"].Value);
-                decimal overPayment = Convert.ToDecimal(row.Cells["overPaymentColumn"].Value);
-                decimal interestAmount = Convert.ToDecimal(row.Cells["interestAmountColumn"].Value);
-
-                remainingBalance -= (principalAmount + overPayment);
-
-                row.Cells["remainingBalanceColumn"].Value = remainingBalance.ToString("N2");
-            }
-
-        }*/
-
-
     }
 }

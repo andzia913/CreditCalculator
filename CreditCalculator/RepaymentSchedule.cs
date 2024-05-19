@@ -10,7 +10,6 @@ namespace CreditCalculator
     {
         public int repaymentsCount;
         public Loan loan;
-        public List<Repayment> repaymentsList;
 
         public List<Repayment> CalculateRepaymentSchedule(Loan loan)
         {
@@ -29,7 +28,7 @@ namespace CreditCalculator
             for (int paymentNumber = 1; paymentNumber <= totalNumberOfPayments; paymentNumber++)
             {
                 if (remainingBalance <= 0) break;
-                if (cyclicOverPayment != 0)
+                if (cyclicOverPayment != 0 && personalizedOverPayment == null)
                 {
                     decimal interestAmount = remainingBalance * monthlyInterestRate;
                     decimal principalAmount = monthlyPayment - interestAmount;
@@ -86,7 +85,6 @@ namespace CreditCalculator
             }
 
             repaymentsCount = repaymentSchedule.Count;
-            this.repaymentsList = repaymentSchedule;
 
             return repaymentSchedule;
         }

@@ -66,12 +66,14 @@
             this.btn_editSchedule = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_calculate
@@ -95,7 +97,7 @@
             this.txt_loanAmount.Name = "txt_loanAmount";
             this.txt_loanAmount.Size = new System.Drawing.Size(100, 27);
             this.txt_loanAmount.TabIndex = 1;
-            this.txt_loanAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_loanAmount_KeyPress);
+            this.txt_loanAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allowOnlyDecimalNumbers);
             // 
             // txt_loanPeriod
             // 
@@ -135,7 +137,7 @@
             this.txt_interestRate.Name = "txt_interestRate";
             this.txt_interestRate.Size = new System.Drawing.Size(100, 27);
             this.txt_interestRate.TabIndex = 5;
-            this.txt_interestRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_interestRate_KeyPress);
+            this.txt_interestRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allowOnlyDecimalNumbers);
             // 
             // label3
             // 
@@ -253,6 +255,7 @@
             this.txt_cyclicOverPayment.Name = "txt_cyclicOverPayment";
             this.txt_cyclicOverPayment.Size = new System.Drawing.Size(100, 27);
             this.txt_cyclicOverPayment.TabIndex = 16;
+            this.txt_cyclicOverPayment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allowOnlyDecimalNumbers);
             // 
             // btn_overPayment
             // 
@@ -311,6 +314,7 @@
             this.txt_oneOverPayment.Name = "txt_oneOverPayment";
             this.txt_oneOverPayment.Size = new System.Drawing.Size(111, 27);
             this.txt_oneOverPayment.TabIndex = 17;
+            this.txt_oneOverPayment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allowOnlyDecimalNumbers);
             // 
             // label5
             // 
@@ -468,6 +472,7 @@
             this.button2.TabIndex = 18;
             this.button2.Text = "Wyczyść zmiany";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.clearOverPaymentData);
             // 
             // label10
             // 
@@ -480,6 +485,10 @@
             this.label10.Size = new System.Drawing.Size(449, 20);
             this.label10.TabIndex = 16;
             this.label10.Text = "Edytuj nadpłatę dla każdej raty osobno w hamonogramie";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // MainForm
             // 
@@ -512,6 +521,7 @@
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -554,6 +564,7 @@
         private System.Windows.Forms.Label lbl_loanPeriodChange;
         private System.Windows.Forms.Label lbl_interestTotalChange;
         private System.Windows.Forms.Label lbl_totalCostChange;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
 
