@@ -12,26 +12,23 @@ namespace CreditCalculator
 {
     public partial class RepaymentScheduleForm : Form
     {
-        public Loan loan;
-        RepaymentSchedule repaymentSchedule;
-        public List<Repayment> schedule;
+        public List<Repayment> repaymentSchedule;
         public bool isEditMode;
+        public bool basicSchedule;
 
 
-        public RepaymentScheduleForm(Loan loan, bool isEditMode = false)
+        public RepaymentScheduleForm(List<Repayment> repaymentSchedule, bool isEditMode = false, bool basicSchedule = false)
         {
             InitializeComponent();
-            this.loan = loan;
+            this.repaymentSchedule = repaymentSchedule;
             this.isEditMode = isEditMode;
+            this.basicSchedule = basicSchedule; 
             RepaymentScheduleForm_Load(this, null);
-            dataGridView2.CellEndEdit += dataGridView2_CellEndEdit; 
+            //dataGridView2.CellEndEdit += dataGridView2_CellEndEdit; 
         }
 
         public void RepaymentScheduleForm_Load(object sender, EventArgs e)
         {
-            RepaymentSchedule repaymentSchedule = new RepaymentSchedule();
-
-            schedule = repaymentSchedule.CalculateRepaymentSchedule(loan);
             dataGridView2.Columns.Clear();
             dataGridView2.ReadOnly = false;
 
@@ -44,7 +41,7 @@ namespace CreditCalculator
             dataGridView2.Columns.Add("principalAmountColumn", "Kapitał");
             dataGridView2.Columns["principalAmountColumn"].ReadOnly = true;
 
-            if (loan.CyclicOverPayment != 0 || loan.OneTimeOverPayment != 0 || isEditMode)
+            if (!basicSchedule || isEditMode)
             {
                 dataGridView2.Columns.Add("overPaymentColumn", "Nadpłata");
                 dataGridView2.Columns["overPaymentColumn"].ReadOnly = true;
@@ -60,7 +57,7 @@ namespace CreditCalculator
             dataGridView2.Columns.Add("remainingBalanceColumn", "Pozostały do spłaty kapitał");
             dataGridView2.Columns["remainingBalanceColumn"].ReadOnly = true;
 
-            fillGridRows(schedule);
+            fillGridRows(repaymentSchedule);
 
         }
         public void  fillGridRows(List<Repayment> schedule)
@@ -75,7 +72,7 @@ namespace CreditCalculator
                 dataGridView2.Rows[rowIndex].Cells["interestAmountColumn"].Value = Math.Round(r.InterestAmount, 2);
                 dataGridView2.Rows[rowIndex].Cells["remainingBalanceColumn"].Value = Math.Round(r.RemainingBalance, 2);
 
-                if (loan.CyclicOverPayment != 0 || loan.OneTimeOverPayment !=0)
+                if (!basicSchedule)
                 {
                     dataGridView2.Rows[rowIndex].Cells["overPaymentColumn"].Value = r.OverPayment.ToString("N2");
                 }
@@ -90,13 +87,19 @@ namespace CreditCalculator
                 int rowIndex = e.RowIndex;
                 decimal overPayment = Convert.ToDecimal(dataGridView2.Rows[rowIndex].Cells["overPaymentColumn"].Value);
                 OverPaymentChanged?.Invoke(this, new OverPaymentChangedEventArgs(rowIndex, overPayment));
-                UpdateRemainingBalances();
+                //UpdateRemainingBalances();
             }
 
         }
-        private void UpdateRemainingBalances()
+
+        public void refreshGrid()
         {
-            decimal remainingBalance = loan.LoanAmount;
+            dataGridView2.Rows.Clear();
+            fillGridRows(repaymentSchedule);
+        }
+        /*private void UpdateRemainingBalances()
+        {
+            decimal remainingBalance = repaymentSchedule.loan.LoanAmount;
             foreach (DataGridViewRow row in dataGridView2.Rows)
             {
                 decimal principalAmount = Convert.ToDecimal(row.Cells["principalAmountColumn"].Value);
@@ -108,7 +111,7 @@ namespace CreditCalculator
                 row.Cells["remainingBalanceColumn"].Value = remainingBalance.ToString("N2");
             }
 
-        }
+        }*/
 
 
     }

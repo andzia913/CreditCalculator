@@ -77,7 +77,6 @@
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(657, 560);
             this.dataGridView2.TabIndex = 12;
-            this.dataGridView2.DataMemberChanged += new System.EventHandler(this.RepaymentScheduleForm_Load);
             this.dataGridView2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellEndEdit);
             // 
             // RepaymentScheduleForm

@@ -14,7 +14,7 @@ namespace CreditCalculator
         public int LoanPeriod { get; set; } 
         public decimal CyclicOverPayment { get; set; }
         public decimal OneTimeOverPayment { get; set; }
-        public OverPaymentChangedEventArgs PersonalizedOverPayment { get; set; }
+        public List<OverPaymentChangedEventArgs> PersonalizedOverPayment { get; set; }
 
 
         public Loan(decimal loanAmount, decimal interestRate, int loanPeriod, decimal cyclicOverPayment = 0, decimal oneTimeOverPayment = 0, OverPaymentChangedEventArgs personalizedOverPayment = null)
@@ -24,7 +24,10 @@ namespace CreditCalculator
             LoanPeriod = loanPeriod;
             CyclicOverPayment = cyclicOverPayment;
             OneTimeOverPayment = oneTimeOverPayment;
-            PersonalizedOverPayment = personalizedOverPayment;
+            if(personalizedOverPayment != null)
+            {
+                PersonalizedOverPayment.Add(personalizedOverPayment);
+            }
         }
 
 
